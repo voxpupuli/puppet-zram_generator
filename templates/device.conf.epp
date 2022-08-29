@@ -1,0 +1,31 @@
+<%- |
+  Pattern[/\Azram\d+\z/] $device,
+  Variant[Enum['none'],Integer[0]] $host_memory_limit,
+  Variant[Integer[1], String[1]] $zram_size,
+  Optional[String[1]] $compression_algorithm,
+  Optional[Stdlib::Unixpath] $writeback_device,
+  Integer[-1,32767] $swap_priority,
+  Optional[Stdlib::Unixpath] $mount_point,
+  Optional[String[1]] $fs_type,
+  String[1] $options,
+| -%>
+# Puppet installed zram-generator configuration for <%= $device %>
+
+[<%= $device %>]
+
+host-memory-limit      = <%= $host_memory_limit %>
+zram-size              = <%= $zram_size %>
+<%- if $compression_algorithm { -%>
+compression-algorithm = <%= $compression_algorithm %>
+<%- } -%>
+<%- if $writeback_device { -%>
+writeback-device       = <%= $writeback_device %>
+<%- } -%>
+swap-priority          = <%= $swap_priority %>
+<%- if $mount_point { -%>
+mount-point            = <%= $mount_point %>
+<%- } -%>
+<%- if $fs_type { -%>
+fs-type                = <%= $fs_type %>
+<%- } -%>
+options                = <%= $options %>
