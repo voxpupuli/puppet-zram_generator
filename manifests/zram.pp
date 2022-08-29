@@ -33,22 +33,21 @@
 #   The name of device to create, e.g. `zram0`.
 #
 # @param ensure
-#   Configure and start device or stop and de-cofnigure device
+#   Configure and start device or stop and de-configure device
 #
 # @param host_memory_limit 
 #   The maximum amount of memory (in MiB). If set to `none` then there will be no limit. 
-#   If unset 
 #
 # @param zram_size
-#   The size of the zram device, as a function of MemTotal, both in MB.
+#   The size of the zram device, as a function of MemTotal or absolute, both in MB.
 #
 # @param compression_algorithm
-#   Specifies the algorithm used to compress the zram device.
+#   Specifies the algorithm used to compress the zram device. If unset will use kernel's default.
 #
 # @param writeback_device
 #   Write incompressible pages, for which no gain was achieved, to the specified device under memory pressure. 
-#   This corresponds to the /sys/block/zramX/backing_dev parameter.
-#   Takes a path to a block device, like /dev/disk/by-partuuid/2d54ffa0-01 or /dev/zvol/tarta-zoot/swap-writeback.
+#   This corresponds to the `/sys/block/zramX/backing_dev` parameter.
+#   Takes a path to a block device, like `/dev/disk/by-partuuid/2d54ffa0-01` or `/dev/zvol/tarta-zoot/swap-writeback`.
 #   If unset, none is used, and incompressible pages are kept in RAM.
 #
 # @param swap_priority
@@ -61,7 +60,7 @@
 #
 # @param fs_type
 #  Specifies how the device shall be formatted. The default is ext2 if mount-point is specified, and swap 
-#  otherwise. (Effectively, the device will be formatted as swap, if neither fs-type= nor mount-point= are specified.)
+#  otherwise. (Effectively, the device will be formatted as swap, if neither `fs_type` nor `mount_point` are specified.)
 #  Note that the device is temporary: contents will be destroyed automatically after the file system is unmounted 
 #  (to release the backing memory).
 #
