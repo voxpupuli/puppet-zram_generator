@@ -3,7 +3,7 @@
   "version": "0.0.1-rc0",
   "author": "Vox Pupuli",
   "summary": "zram_generator configuration",
-  "license": "ASL 2",
+  "license": "Apache-2.0",
   "source": "https://github.com/voxpupuli/puppet-zram_generator.git",
   "project_page": "https://github.com/voxpupuli/puppet-zram_generator",
   "issues_url": "https://github.com/voxpupuli/puppet-zram_generator/issues",
