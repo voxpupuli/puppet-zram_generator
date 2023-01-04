@@ -18,7 +18,7 @@
 
 ### Defined types
 
-* [`zram_generator::zram`](#zram_generatorzram): Creates a zram device and optionally mounts it
+* [`zram_generator::zram`](#zram_generator--zram): Creates a zram device and optionally mounts it
 
 ## Classes
 
@@ -33,9 +33,10 @@ Install and configure zram_generator zram mounts
 
 The following parameters are available in the `zram_generator` class:
 
-* [`install_defaults`](#install_defaults)
+* [`install_defaults`](#-zram_generator--install_defaults)
+* [`manage_defaults_package`](#-zram_generator--manage_defaults_package)
 
-##### <a name="install_defaults"></a>`install_defaults`
+##### <a name="-zram_generator--install_defaults"></a>`install_defaults`
 
 Data type: `Enum['installed', 'absent']`
 
@@ -43,9 +44,17 @@ Controls if the package 'zram-generator-defaults' be installed.
 
 Default value: `'absent'`
 
+##### <a name="-zram_generator--manage_defaults_package"></a>`manage_defaults_package`
+
+Data type: `Boolean`
+
+whether the zram-generator-defaults package should be managed
+
+Default value: `$facts['os']['name'] != 'Archlinux'`
+
 ## Defined types
 
-### <a name="zram_generatorzram"></a>`zram_generator::zram`
+### <a name="zram_generator--zram"></a>`zram_generator::zram`
 
 Creates a zram device and optionally mounts it
 
@@ -101,18 +110,18 @@ zram_generator::zram{'zram2':
 
 The following parameters are available in the `zram_generator::zram` defined type:
 
-* [`device`](#device)
-* [`ensure`](#ensure)
-* [`host_memory_limit`](#host_memory_limit)
-* [`zram_size`](#zram_size)
-* [`compression_algorithm`](#compression_algorithm)
-* [`writeback_device`](#writeback_device)
-* [`swap_priority`](#swap_priority)
-* [`mount_point`](#mount_point)
-* [`fs_type`](#fs_type)
-* [`options`](#options)
+* [`device`](#-zram_generator--zram--device)
+* [`ensure`](#-zram_generator--zram--ensure)
+* [`host_memory_limit`](#-zram_generator--zram--host_memory_limit)
+* [`zram_size`](#-zram_generator--zram--zram_size)
+* [`compression_algorithm`](#-zram_generator--zram--compression_algorithm)
+* [`writeback_device`](#-zram_generator--zram--writeback_device)
+* [`swap_priority`](#-zram_generator--zram--swap_priority)
+* [`mount_point`](#-zram_generator--zram--mount_point)
+* [`fs_type`](#-zram_generator--zram--fs_type)
+* [`options`](#-zram_generator--zram--options)
 
-##### <a name="device"></a>`device`
+##### <a name="-zram_generator--zram--device"></a>`device`
 
 Data type: `Pattern[/\Azram\d+\z/]`
 
@@ -120,7 +129,7 @@ The name of device to create, e.g. `zram0`.
 
 Default value: `$title`
 
-##### <a name="ensure"></a>`ensure`
+##### <a name="-zram_generator--zram--ensure"></a>`ensure`
 
 Data type: `Enum['present','absent']`
 
@@ -128,7 +137,7 @@ Configure and start device or stop and de-configure device
 
 Default value: `'present'`
 
-##### <a name="host_memory_limit"></a>`host_memory_limit`
+##### <a name="-zram_generator--zram--host_memory_limit"></a>`host_memory_limit`
 
 Data type: `Variant[Enum['none'],Integer[0]]`
 
@@ -136,7 +145,7 @@ The maximum amount of memory (in MiB). If set to `none` then there will be no li
 
 Default value: `'none'`
 
-##### <a name="zram_size"></a>`zram_size`
+##### <a name="-zram_generator--zram--zram_size"></a>`zram_size`
 
 Data type: `Variant[Integer[1], String[1]]`
 
@@ -144,15 +153,15 @@ The size of the zram device, as a function of MemTotal or absolute, both in MB.
 
 Default value: `'min(ram / 2, 4096)'`
 
-##### <a name="compression_algorithm"></a>`compression_algorithm`
+##### <a name="-zram_generator--zram--compression_algorithm"></a>`compression_algorithm`
 
 Data type: `Optional[String[1]]`
 
 Specifies the algorithm used to compress the zram device. If unset will use kernel's default.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="writeback_device"></a>`writeback_device`
+##### <a name="-zram_generator--zram--writeback_device"></a>`writeback_device`
 
 Data type: `Optional[Stdlib::Unixpath]`
 
@@ -161,9 +170,9 @@ This corresponds to the `/sys/block/zramX/backing_dev` parameter.
 Takes a path to a block device, like `/dev/disk/by-partuuid/2d54ffa0-01` or `/dev/zvol/tarta-zoot/swap-writeback`.
 If unset, none is used, and incompressible pages are kept in RAM.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="swap_priority"></a>`swap_priority`
+##### <a name="-zram_generator--zram--swap_priority"></a>`swap_priority`
 
 Data type: `Integer[-1,32767]`
 
@@ -171,7 +180,7 @@ Controls the relative swap priority. Higher numbers indicate higher priority.
 
 Default value: `100`
 
-##### <a name="mount_point"></a>`mount_point`
+##### <a name="-zram_generator--zram--mount_point"></a>`mount_point`
 
 Data type: `Optional[Stdlib::Unixpath]`
 
@@ -179,9 +188,9 @@ Format the device with a file system (not as swap) and mount this file system ov
 the specified directory. When neither this option nor `fs_type` is specified,
 the device will be formatted as swap.
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="fs_type"></a>`fs_type`
+##### <a name="-zram_generator--zram--fs_type"></a>`fs_type`
 
 Data type: `Optional[String[1]]`
 
@@ -190,9 +199,9 @@ otherwise. (Effectively, the device will be formatted as swap, if neither `fs_ty
 Note that the device is temporary: contents will be destroyed automatically after the file system is unmounted
 (to release the backing memory).
 
-Default value: ``undef``
+Default value: `undef`
 
-##### <a name="options"></a>`options`
+##### <a name="-zram_generator--zram--options"></a>`options`
 
 Data type: `String[1]`
 

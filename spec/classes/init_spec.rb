@@ -15,12 +15,20 @@ describe 'zram_generator' do
         it { is_expected.to contain_class('zram_generator::service') }
         it { is_expected.to contain_exec('generate_zram_units').with_refreshonly(true) }
         it { is_expected.to contain_file('/usr/lib/systemd/zram-generator.conf.d').with_ensure('directory') }
-        it { is_expected.to contain_package('zram-generator-defaults').with_ensure('absent') }
         it { is_expected.to contain_package('zram-generator').with_ensure('installed') }
+
+        if facts[:os]['name'] == 'Archlinux'
+          it { is_expected.not_to contain_package('zram-generator-defaults') }
+        else
+          it { is_expected.to contain_package('zram-generator-defaults').with_ensure('absent') }
+        end
 
         context 'with install_defaults absent' do
           let(:params) do
-            { install_defaults: 'absent' }
+            {
+              install_defaults: 'absent',
+              manage_defaults_package: true
+            }
           end
 
           it { is_expected.to contain_package('zram-generator-defaults').with_ensure('absent') }
@@ -28,10 +36,23 @@ describe 'zram_generator' do
 
         context 'with install_defaults installed' do
           let(:params) do
-            { install_defaults: 'installed' }
+            {
+              install_defaults: 'installed',
+              manage_defaults_package: true
+            }
           end
 
           it { is_expected.to contain_package('zram-generator-defaults').with_ensure('installed') }
+        end
+
+        context 'without defaults package' do
+          let :params do
+            {
+              manage_defaults_package: false
+            }
+          end
+
+          it { is_expected.not_to contain_package('zram-generator-defaults') }
         end
       end
     end
