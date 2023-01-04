@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v1.1.0](https://github.com/voxpupuli/puppet-zram_generator/tree/v1.1.0) (2023-01-04)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-zram_generator/compare/v1.0.0...v1.1.0)
+
+**Implemented enhancements:**
+
+- Add Arch Linux support [\#5](https://github.com/voxpupuli/puppet-zram_generator/pull/5) ([bastelfreak](https://github.com/bastelfreak))
+
 ## [v1.0.0](https://github.com/voxpupuli/puppet-zram_generator/tree/v1.0.0) (2022-08-30)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-zram_generator/compare/24180574860d28637ad7e42a2a50544273cb02ce...v1.0.0)
