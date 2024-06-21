@@ -35,6 +35,7 @@ The following parameters are available in the `zram_generator` class:
 
 * [`install_defaults`](#-zram_generator--install_defaults)
 * [`manage_defaults_package`](#-zram_generator--manage_defaults_package)
+* [`zrams`](#-zram_generator--zrams)
 
 ##### <a name="-zram_generator--install_defaults"></a>`install_defaults`
 
@@ -51,6 +52,14 @@ Data type: `Boolean`
 whether the zram-generator-defaults package should be managed
 
 Default value: `$facts['os']['name'] != 'Archlinux'`
+
+##### <a name="-zram_generator--zrams"></a>`zrams`
+
+Data type: `Stdlib::CreateResources`
+
+Hash of zram_generator::zram instances to expand from hiera.
+
+Default value: `{}`
 
 ## Defined types
 
