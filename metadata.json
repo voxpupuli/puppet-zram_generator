@@ -1,6 +1,6 @@
 {
   "name": "puppet-zram_generator",
-  "version": "1.1.1-rc0",
+  "version": "2.0.0",
   "author": "Vox Pupuli",
   "summary": "zram_generator configuration",
   "license": "Apache-2.0",

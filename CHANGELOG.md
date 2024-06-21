@@ -4,7 +4,26 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
-## [v1.1.0](https://github.com/voxpupuli/puppet-zram_generator/tree/v1.1.0) (2023-01-04)
+## [v2.0.0](https://github.com/voxpupuli/puppet-zram_generator/tree/v2.0.0) (2024-06-23)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-zram_generator/compare/v1.1.0...v2.0.0)
+
+**Breaking changes:**
+
+- Drop CentOS 8 support [\#20](https://github.com/voxpupuli/puppet-zram_generator/pull/20) ([traylenator](https://github.com/traylenator))
+- Support of hash of zram\_generator::zram instances [\#19](https://github.com/voxpupuli/puppet-zram_generator/pull/19) ([traylenator](https://github.com/traylenator))
+- Drop Puppet 6 support [\#8](https://github.com/voxpupuli/puppet-zram_generator/pull/8) ([bastelfreak](https://github.com/bastelfreak))
+
+**Implemented enhancements:**
+
+- Add Puppet 8 support [\#11](https://github.com/voxpupuli/puppet-zram_generator/pull/11) ([bastelfreak](https://github.com/bastelfreak))
+- puppetlabs/stdlib: Allow 9.x [\#10](https://github.com/voxpupuli/puppet-zram_generator/pull/10) ([bastelfreak](https://github.com/bastelfreak))
+
+**Closed issues:**
+
+- using zram with Hiera [\#18](https://github.com/voxpupuli/puppet-zram_generator/issues/18)
+
+## [v1.1.0](https://github.com/voxpupuli/puppet-zram_generator/tree/v1.1.0) (2023-01-05)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-zram_generator/compare/v1.0.0...v1.1.0)
 
