@@ -22,6 +22,18 @@ zram_generator::zram{'zram1':
 
 This will create a `/dev/zram1` device half the size of available RAM and activate it.
 
+## Hiera Example
+
+A set of `zram_generator::zram` can be loaded from hiera:
+
+```yaml
+zram_generator::zrams:
+  zram0:
+    fs_type: 'ext4'
+    mount_point: '/run/mount'
+  zram1:
+    zram_size: 1024
+```
 
 ## Reference
 
