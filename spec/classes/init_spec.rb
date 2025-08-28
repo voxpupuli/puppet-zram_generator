@@ -15,7 +15,13 @@ describe 'zram_generator' do
         it { is_expected.to contain_class('zram_generator::service') }
         it { is_expected.to contain_exec('generate_zram_units').with_refreshonly(true) }
         it { is_expected.to contain_file('/usr/lib/systemd/zram-generator.conf.d').with_ensure('directory') }
-        it { is_expected.to contain_package('zram-generator').with_ensure('installed') }
+
+        if facts[:os]['family'] == 'Debian'
+          it { is_expected.to contain_package('systemd-zram-generator').with_ensure('installed') }
+        else
+          it { is_expected.to contain_package('zram-generator').with_ensure('installed') }
+        end
+
         it { is_expected.to have_zram_generator__zram_resource_count(0) }
 
         if facts[:os]['name'] == 'Archlinux'

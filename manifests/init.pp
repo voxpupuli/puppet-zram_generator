@@ -5,6 +5,7 @@
 # @param zrams Hash of zram_generator::zram instances to expand from hiera.
 #
 class zram_generator (
+  String[1] $package_name,
   Enum['installed', 'absent'] $install_defaults = 'absent',
   Boolean $manage_defaults_package = $facts['os']['name'] != 'Archlinux',
   Stdlib::CreateResources $zrams = {},
