@@ -36,6 +36,7 @@ The following parameters are available in the `zram_generator` class:
 * [`install_defaults`](#-zram_generator--install_defaults)
 * [`manage_defaults_package`](#-zram_generator--manage_defaults_package)
 * [`zrams`](#-zram_generator--zrams)
+* [`package_name`](#-zram_generator--package_name)
 
 ##### <a name="-zram_generator--install_defaults"></a>`install_defaults`
 
@@ -60,6 +61,12 @@ Data type: `Stdlib::CreateResources`
 Hash of zram_generator::zram instances to expand from hiera.
 
 Default value: `{}`
+
+##### <a name="-zram_generator--package_name"></a>`package_name`
+
+Data type: `String[1]`
+
+
 
 ## Defined types
 
