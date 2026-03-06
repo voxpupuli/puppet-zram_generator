@@ -34,7 +34,7 @@ describe 'zram_generator' do
           let(:params) do
             {
               install_defaults: 'absent',
-              manage_defaults_package: true
+              manage_defaults_package: true,
             }
           end
 
@@ -45,7 +45,7 @@ describe 'zram_generator' do
           let(:params) do
             {
               install_defaults: 'installed',
-              manage_defaults_package: true
+              manage_defaults_package: true,
             }
           end
 
@@ -55,7 +55,7 @@ describe 'zram_generator' do
         context 'without defaults package' do
           let :params do
             {
-              manage_defaults_package: false
+              manage_defaults_package: false,
             }
           end
 
@@ -77,16 +77,9 @@ describe 'zram_generator' do
             }
           end
 
-          it {
-            is_expected.to contain_zram_generator__zram('zram0').
-              with_fs_type('ext4').
-              with_mount_point('/run/mount')
-          }
+          it { is_expected.to contain_zram_generator__zram('zram0').with_fs_type('ext4').with_mount_point('/run/mount') }
 
-          it {
-            is_expected.to contain_zram_generator__zram('zram1').
-              with_zram_size('1024')
-          }
+          it { is_expected.to contain_zram_generator__zram('zram1').with_zram_size('1024') }
 
           it { is_expected.to have_zram_generator__zram_resource_count(2) }
         end
