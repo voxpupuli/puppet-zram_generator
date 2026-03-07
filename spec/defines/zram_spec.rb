@@ -19,53 +19,53 @@ describe 'zram_generator::zram' do
           {
             ensure: true,
             enable: true,
-          }
+          },
         )
       }
 
       it {
-        is_expected.to contain_file('/usr/lib/systemd/zram-generator.conf.d/zram0.conf').
-          with_content(%r{^\[zram0\]})
+        is_expected.to contain_file('/usr/lib/systemd/zram-generator.conf.d/zram0.conf')
+          .with_content(%r{^\[zram0\]})
       }
 
       it {
-        is_expected.to contain_file('/usr/lib/systemd/zram-generator.conf.d/zram0.conf').
-          with_content(%r{^host-memory-limit\s+=\snone$})
+        is_expected.to contain_file('/usr/lib/systemd/zram-generator.conf.d/zram0.conf')
+          .with_content(%r{^host-memory-limit\s+=\snone$})
       }
 
       it {
-        is_expected.to contain_file('/usr/lib/systemd/zram-generator.conf.d/zram0.conf').
-          with_content(%r{^zram-size\s+=\smin\(ram / 2, 4096\)$})
+        is_expected.to contain_file('/usr/lib/systemd/zram-generator.conf.d/zram0.conf')
+          .with_content(%r{^zram-size\s+=\smin\(ram / 2, 4096\)$})
       }
 
       it {
-        is_expected.to contain_file('/usr/lib/systemd/zram-generator.conf.d/zram0.conf').
-          with_content(%r{^swap-priority\s+=\s100$})
+        is_expected.to contain_file('/usr/lib/systemd/zram-generator.conf.d/zram0.conf')
+          .with_content(%r{^swap-priority\s+=\s100$})
       }
 
       it {
-        is_expected.to contain_file('/usr/lib/systemd/zram-generator.conf.d/zram0.conf').
-          with_content(%r{^options\s+=\sdiscard$})
+        is_expected.to contain_file('/usr/lib/systemd/zram-generator.conf.d/zram0.conf')
+          .with_content(%r{^options\s+=\sdiscard$})
       }
 
       it {
-        is_expected.to contain_file('/usr/lib/systemd/zram-generator.conf.d/zram0.conf').
-          without_content(%r{compression-algorithm})
+        is_expected.to contain_file('/usr/lib/systemd/zram-generator.conf.d/zram0.conf')
+          .without_content(%r{compression-algorithm})
       }
 
       it {
-        is_expected.to contain_file('/usr/lib/systemd/zram-generator.conf.d/zram0.conf').
-          without_content(%r{mount-point})
+        is_expected.to contain_file('/usr/lib/systemd/zram-generator.conf.d/zram0.conf')
+          .without_content(%r{mount-point})
       }
 
       it {
-        is_expected.to contain_file('/usr/lib/systemd/zram-generator.conf.d/zram0.conf').
-          without_content(%r{fs-type})
+        is_expected.to contain_file('/usr/lib/systemd/zram-generator.conf.d/zram0.conf')
+          .without_content(%r{fs-type})
       }
 
       it {
-        is_expected.to contain_file('/usr/lib/systemd/zram-generator.conf.d/zram0.conf').
-          without_content(%r{writeback-device})
+        is_expected.to contain_file('/usr/lib/systemd/zram-generator.conf.d/zram0.conf')
+          .without_content(%r{writeback-device})
       }
 
       context 'with ensure present' do
@@ -80,7 +80,7 @@ describe 'zram_generator::zram' do
             {
               ensure: true,
               enable: true,
-            }
+            },
           )
         }
       end
@@ -97,7 +97,7 @@ describe 'zram_generator::zram' do
             {
               ensure: false,
               enable: false,
-            }
+            },
           )
         }
       end
@@ -118,48 +118,48 @@ describe 'zram_generator::zram' do
         end
 
         it {
-          is_expected.to contain_file('/usr/lib/systemd/zram-generator.conf.d/zram1.conf').
-            with_content(%r{^\[zram1\]})
+          is_expected.to contain_file('/usr/lib/systemd/zram-generator.conf.d/zram1.conf')
+            .with_content(%r{^\[zram1\]})
         }
 
         it {
-          is_expected.to contain_file('/usr/lib/systemd/zram-generator.conf.d/zram1.conf').
-            with_content(%r{^host-memory-limit\s+=\s1000$})
+          is_expected.to contain_file('/usr/lib/systemd/zram-generator.conf.d/zram1.conf')
+            .with_content(%r{^host-memory-limit\s+=\s1000$})
         }
 
         it {
-          is_expected.to contain_file('/usr/lib/systemd/zram-generator.conf.d/zram1.conf').
-            with_content(%r{^zram-size\s+=\s2000$})
+          is_expected.to contain_file('/usr/lib/systemd/zram-generator.conf.d/zram1.conf')
+            .with_content(%r{^zram-size\s+=\s2000$})
         }
 
         it {
-          is_expected.to contain_file('/usr/lib/systemd/zram-generator.conf.d/zram1.conf').
-            with_content(%r{^swap-priority\s+=\s2000$})
+          is_expected.to contain_file('/usr/lib/systemd/zram-generator.conf.d/zram1.conf')
+            .with_content(%r{^swap-priority\s+=\s2000$})
         }
 
         it {
-          is_expected.to contain_file('/usr/lib/systemd/zram-generator.conf.d/zram1.conf').
-            with_content(%r{^options\s+=\sspecial ones$})
+          is_expected.to contain_file('/usr/lib/systemd/zram-generator.conf.d/zram1.conf')
+            .with_content(%r{^options\s+=\sspecial ones$})
         }
 
         it {
-          is_expected.to contain_file('/usr/lib/systemd/zram-generator.conf.d/zram1.conf').
-            with_content(%r{^compression-algorithm\s+=\s+special$})
+          is_expected.to contain_file('/usr/lib/systemd/zram-generator.conf.d/zram1.conf')
+            .with_content(%r{^compression-algorithm\s+=\s+special$})
         }
 
         it {
-          is_expected.to contain_file('/usr/lib/systemd/zram-generator.conf.d/zram1.conf').
-            with_content(%r{^mount-point\s+=\s+/foo/bar$})
+          is_expected.to contain_file('/usr/lib/systemd/zram-generator.conf.d/zram1.conf')
+            .with_content(%r{^mount-point\s+=\s+/foo/bar$})
         }
 
         it {
-          is_expected.to contain_file('/usr/lib/systemd/zram-generator.conf.d/zram1.conf').
-            with_content(%r{^fs-type\s+=\s+ext1000$})
+          is_expected.to contain_file('/usr/lib/systemd/zram-generator.conf.d/zram1.conf')
+            .with_content(%r{^fs-type\s+=\s+ext1000$})
         }
 
         it {
-          is_expected.to contain_file('/usr/lib/systemd/zram-generator.conf.d/zram1.conf').
-            with_content(%r{^writeback-device\s+=\s+/dev/my/write/back$})
+          is_expected.to contain_file('/usr/lib/systemd/zram-generator.conf.d/zram1.conf')
+            .with_content(%r{^writeback-device\s+=\s+/dev/my/write/back$})
         }
       end
     end
