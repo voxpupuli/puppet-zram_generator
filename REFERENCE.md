@@ -68,6 +68,8 @@ Data type: `String[1]`
 
 
 
+Default value: `'zram-generator'`
+
 ## Defined types
 
 ### <a name="zram_generator--zram"></a>`zram_generator::zram`
