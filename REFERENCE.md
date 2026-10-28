@@ -226,4 +226,3 @@ Data type: `String[1]`
 Sets mount or swapon options. Availability depends on fs-type.
 
 Default value: `'discard'`
-
